@@ -1,0 +1,25 @@
+name: Get help or report a bug
+description: Something in Peekly is not working.
+title: "[Help] "
+labels: ["support"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues on GitHub are **public**. Please do not post personal details or private information.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what did you see instead?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Peekly version and Android version
+      placeholder: "Peekly 0.1.0, Android 14"
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce

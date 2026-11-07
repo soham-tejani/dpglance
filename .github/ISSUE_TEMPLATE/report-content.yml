@@ -1,0 +1,36 @@
+name: Report misuse or request removal
+description: You are a creator or rights holder with a concern about how Peekly shows public content.
+title: "[Report] "
+labels: ["report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues on GitHub are **public**. Please do not post personal details, private screenshots or anything
+        sensitive. Peekly does not host anyone's content; it shows what a profile already publishes publicly. The quickest
+        way to stop a profile appearing is to change its visibility in Snapchat. We review every request.
+  - type: input
+    id: username
+    attributes:
+      label: Username concerned
+      description: The public username only.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is the concern?
+      options:
+        - Misuse or harassment
+        - Copyright or rights concern
+        - Impersonation
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Describe the problem without sharing private information.
+    validations:
+      required: true

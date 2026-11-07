@@ -1,0 +1,17 @@
+name: Privacy request
+description: A question or request about your data and Peekly.
+title: "[Privacy] "
+labels: ["privacy"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues on GitHub are **public**. Do not include personal details. Tell us what you need and we will reply here
+        with a private way to continue if one is needed. Peekly holds no personal data about you on a server, so see the
+        [Privacy Policy](https://soham-tejani.github.io/peekly/privacy/) first.
+  - type: textarea
+    id: request
+    attributes:
+      label: What do you need?
+    validations:
+      required: true
