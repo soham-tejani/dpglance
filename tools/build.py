@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Generates the static Peekly site into ../docs. Run: python3 tools/build.py"""
+"""Generates the static DPGlance site into ../docs. Run: python3 tools/build.py"""
 import json
 import pathlib
 from html import escape
 
 OUT = pathlib.Path(__file__).resolve().parent.parent / "docs"
-SITE = "https://soham-tejani.github.io/peekly"
-REPO = "https://github.com/soham-tejani/peekly"
+SITE = "https://soham-tejani.github.io/dpglance"
+REPO = "https://github.com/soham-tejani/dpglance"
 ISSUES = REPO + "/issues/new/choose"
 ISSUE_HELP = REPO + "/issues/new?template=support.yml"
 ISSUE_REPORT = REPO + "/issues/new?template=report-content.yml"
@@ -16,7 +16,7 @@ UPDATED_H = "8 November 2026"
 OG = SITE + "/assets/img/og-image.png"
 
 DISCLAIMER = (
-    "Peekly is an independent app and is not affiliated with, endorsed by, or sponsored by Snap Inc. "
+    "DPGlance is an independent app and is not affiliated with, endorsed by, or sponsored by Snap Inc. "
     "Snapchat, Snap and the Ghost logo are trademarks of Snap Inc., used here only to describe what the app "
     "works with. Google Play and Android are trademarks of Google LLC."
 )
@@ -36,35 +36,35 @@ def icon(name):
 
 
 FAQ = [
-    ("What is Peekly?",
-     "Peekly is a free Android app that shows the public photos on a profile (the profile picture, cover image and "
+    ("What is DPGlance?",
+     "DPGlance is a free Android app that shows the public photos on a profile (the profile picture, cover image and "
      "highlights) at full size from a link you copy, and lets you save them to your gallery."),
     ("Does it work with private accounts?",
-     "No. Peekly only shows what a profile publishes publicly. A personal account without a public profile photo "
-     "shows a “no public photo” message. Peekly never asks you to sign in and never shows anything that "
+     "No. DPGlance only shows what a profile publishes publicly. A personal account without a public profile photo "
+     "shows a “no public photo” message. DPGlance never asks you to sign in and never shows anything that "
      "is not already public."),
     ("Do I need an account?",
-     "No. Peekly has no accounts, no sign-in and no developer server."),
+     "No. DPGlance has no accounts, no sign-in and no developer server."),
     ("Why do I watch an ad?",
-     "Peekly is free. Unlocking a profile’s photo and cover, or a highlight, takes one short rewarded ad from "
+     "DPGlance is free. Unlocking a profile’s photo and cover, or a highlight, takes one short rewarded ad from "
      "Google AdMob. You always choose to start it, and nothing pops up unexpectedly. If an ad can’t load after a "
-     "couple of tries, Peekly lets you continue."),
-    ("What does Peekly do with my clipboard?",
+     "couple of tries, DPGlance lets you continue."),
+    ("What does DPGlance do with my clipboard?",
      "Each time you open the app, it checks on your device whether the text you most recently copied is a Snapchat "
      "profile link. Nothing from your clipboard is stored or sent anywhere, except the username in that link, which "
      "is looked up on snapchat.com. Details are in the Privacy Policy."),
     ("Where are my saved files?",
-     "Photos are saved to Pictures/Peekly/username and videos to Movies/Peekly/username on your phone, using "
-     "Android’s standard media storage, so Peekly needs no storage permission."),
-    ("Is Peekly affiliated with Snapchat?",
-     "No. Peekly is an independent app and is not affiliated with, endorsed by, or sponsored by Snap Inc. Snapchat "
+     "Photos are saved to Pictures/DPGlance/username and videos to Movies/DPGlance/username on your phone, using "
+     "Android’s standard media storage, so DPGlance needs no storage permission."),
+    ("Is DPGlance affiliated with Snapchat?",
+     "No. DPGlance is an independent app and is not affiliated with, endorsed by, or sponsored by Snap Inc. Snapchat "
      "and the Ghost logo are trademarks of Snap Inc."),
     ("Which Android versions are supported?",
      "Android 10 (API level 29) and later."),
-    ("Who owns the pictures I see in Peekly?",
+    ("Who owns the pictures I see in DPGlance?",
      "Their creators. Save images for personal use only, and don’t repost them without the creator’s permission."),
     ("How do I report misuse or ask for removal?",
-     "Open a support request on the Support page. Peekly only reads what a profile already publishes on Snapchat, so "
+     "Open a support request on the Support page. DPGlance only reads what a profile already publishes on Snapchat, so "
      "the quickest way to stop a profile appearing is to change that profile’s visibility in Snapchat. We also "
      "review every request."),
 ]
@@ -92,20 +92,20 @@ def head(title, desc, path, root, jsonld=None, noindex=False):
 <meta name="theme-color" content="#0c0c0d">
 <meta name="color-scheme" content="dark">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Peekly">
+<meta property="og:site_name" content="DPGlance">
 <meta property="og:title" content="{t}">
 <meta property="og:description" content="{d}">
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="{OG}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Peekly app icon, an amber eye with a coral iris, on a dark glass background">
+<meta property="og:image:alt" content="DPGlance app icon, an amber profile avatar with a coral sparkle, on a dark glass background">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{t}">
 <meta name="twitter:description" content="{d}">
 <meta name="twitter:image" content="{OG}">
-<meta name="twitter:image:alt" content="Peekly app icon, an amber eye with a coral iris, on a dark glass background">
+<meta name="twitter:image:alt" content="DPGlance app icon, an amber profile avatar with a coral sparkle, on a dark glass background">
 <link rel="icon" href="{root}assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="{root}favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="{root}assets/img/apple-touch-icon.png">
@@ -129,7 +129,7 @@ def header(root, current=""):
 <header class="site-header">
 <div class="wrap">
 <nav class="nav glass" aria-label="Main">
-<a class="brand" href="{home}"><img src="{root}assets/img/logo.svg" width="34" height="34" alt="">Peekly</a>
+<a class="brand" href="{home}"><img src="{root}assets/img/logo.svg" width="34" height="34" alt="">DPGlance</a>
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
 <ul id="menu">
 {a("Features", home + "#features", "")}
@@ -149,8 +149,8 @@ def footer(root):
     return f"""<footer>
 <div class="wrap foot">
 <div>
-<a class="brand" href="{home}"><img src="{root}assets/img/logo.svg" width="34" height="34" alt="">Peekly</a>
-<p class="meta" style="margin-top:12px">Peek at any public profile. A free Android app for viewing and saving public profile photos, covers and highlights.</p>
+<a class="brand" href="{home}"><img src="{root}assets/img/logo.svg" width="34" height="34" alt="">DPGlance</a>
+<p class="meta" style="margin-top:12px">Glance at any public profile. A free Android app for viewing and saving public profile photos, covers and highlights.</p>
 </div>
 <div>
 <h2>Explore</h2>
@@ -169,7 +169,7 @@ def footer(root):
 <li><a href="{REPO}" rel="noopener">Site source on GitHub</a></li>
 </ul>
 </div>
-<p class="legal">{DISCLAIMER} &copy; 2026 Peekly.</p>
+<p class="legal">{DISCLAIMER} &copy; 2026 DPGlance.</p>
 </div>
 </footer>
 <script src="{root}assets/js/main.js" defer></script>
@@ -193,7 +193,7 @@ def breadcrumb_ld(label, path):
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Peekly", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 1, "name": "DPGlance", "item": SITE + "/"},
             {"@type": "ListItem", "position": 2, "name": label, "item": SITE + "/" + path},
         ],
     }
@@ -202,13 +202,13 @@ def breadcrumb_ld(label, path):
 # ---------------------------------------------------------------- home
 def home():
     root = ""
-    title = "Peekly: view public profile photos, covers and highlights"
-    desc = ("Peekly is a free Android app. Copy a public profile link to view the profile photo, cover and "
+    title = "DPGlance: view public profile photos, covers and highlights"
+    desc = ("DPGlance is a free Android app. Copy a public profile link to view the profile photo, cover and "
             "highlights at full size and save them. No account needed.")
     ld = [
-        {"@context": "https://schema.org", "@type": "WebSite", "name": "Peekly", "url": SITE + "/",
+        {"@context": "https://schema.org", "@type": "WebSite", "name": "DPGlance", "url": SITE + "/",
          "description": desc, "inLanguage": "en"},
-        {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Peekly",
+        {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "DPGlance",
          "description": desc, "url": SITE + "/", "image": SITE + "/assets/img/og-image.png",
          "applicationCategory": "UtilitiesApplication", "operatingSystem": "ANDROID",
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
@@ -232,8 +232,8 @@ def home():
 <div class="wrap hero">
 <div>
 <p class="eyebrow">Profile viewer for Android</p>
-<h1>Peek at any <span class="grad">public profile.</span></h1>
-<p class="lead" style="margin-top:20px">Copy a public profile link, open Peekly, and see the profile photo, cover and highlights at full size. Save what you like to your gallery. No account, no sign-in.</p>
+<h1>Glance at any <span class="grad">public profile.</span></h1>
+<p class="lead" style="margin-top:20px">Copy a public profile link, open DPGlance, and see the profile photo, cover and highlights at full size. Save what you like to your gallery. No account, no sign-in.</p>
 <div class="cta">
 <a class="btn primary" href="#how">See how it works</a>
 <span class="soon"><span class="dot" aria-hidden="true"></span>Coming soon to Google Play</span>
@@ -243,7 +243,7 @@ def home():
 </ul>
 </div>
 <div class="reveal">
-<div class="phone" role="img" aria-label="Illustration of the Peekly profile screen: a round profile picture, a Watch a short ad to view and save button, a locked cover image and a row of highlights.">
+<div class="phone" role="img" aria-label="Illustration of the DPGlance profile screen: a round profile picture, a Watch a short ad to view and save button, a locked cover image and a row of highlights.">
 <div class="screen">
 <span class="orb o1"></span><span class="orb o2"></span>
 <div class="bar"><b>&larr;</b>@username</div>
@@ -264,10 +264,10 @@ def home():
 <div class="wrap">
 <div class="head reveal"><p class="eyebrow">Features</p><h2 id="f-h">Everything a profile viewer needs, nothing it doesn&rsquo;t.</h2></div>
 <div class="grid">
-<article class="card glass reveal">{icon("link")}<h3>Finds your link</h3><p>Copy a public profile link and open Peekly. It spots the link for you, or you can paste a link or username yourself.</p></article>
+<article class="card glass reveal">{icon("link")}<h3>Finds your link</h3><p>Copy a public profile link and open DPGlance. It spots the link for you, or you can paste a link or username yourself.</p></article>
 <article class="card glass reveal">{icon("image")}<h3>Full-size photos and covers</h3><p>See the profile picture and cover image at the largest size the profile offers, with pinch-to-zoom.</p></article>
 <article class="card glass reveal">{icon("play")}<h3>Highlights and Spotlight</h3><p>Browse a profile&rsquo;s public highlights and Spotlight rows and open each one in a full-screen viewer.</p></article>
-<article class="card glass reveal">{icon("download")}<h3>Save to your gallery</h3><p>Save photos and videos to Pictures/Peekly using Android&rsquo;s media storage. No storage permission needed.</p></article>
+<article class="card glass reveal">{icon("download")}<h3>Save to your gallery</h3><p>Save photos and videos to Pictures/DPGlance using Android&rsquo;s media storage. No storage permission needed.</p></article>
 <article class="card glass reveal">{icon("shield")}<h3>Private by design</h3><p>No account, no analytics of ours and no developer server. Your recent profiles stay on your phone.</p></article>
 <article class="card glass reveal">{icon("clock")}<h3>Fair, rewarded ads</h3><p>One short ad that you choose to watch unlocks a profile. Nothing pops up out of the blue.</p></article>
 </div>
@@ -279,7 +279,7 @@ def home():
 <div class="head reveal"><p class="eyebrow">How it works</p><h2 id="h-h">Three taps from link to photo.</h2></div>
 <ol class="steps">
 <li class="glass reveal"><h3>Copy a link</h3><p>Copy a public profile link from Snapchat, a browser or a message.</p></li>
-<li class="glass reveal"><h3>Open Peekly</h3><p>Peekly detects the link and loads the public profile. Or paste it yourself.</p></li>
+<li class="glass reveal"><h3>Open DPGlance</h3><p>DPGlance detects the link and loads the public profile. Or paste it yourself.</p></li>
 <li class="glass reveal"><h3>View and save</h3><p>Watch one short rewarded ad to unlock, then view full-size and save to your gallery.</p></li>
 </ol>
 </div>
@@ -291,9 +291,9 @@ def home():
 <p class="eyebrow">Responsible use</p>
 <h2 id="r-h" style="font-size:1.6rem">Public content, creator&rsquo;s rights.</h2>
 <ul>
-<li>Peekly only shows what a profile publishes publicly.</li>
+<li>DPGlance only shows what a profile publishes publicly.</li>
 <li>Pictures belong to their creators. Save them for personal use and don&rsquo;t repost without permission.</li>
-<li>Don&rsquo;t use Peekly to harass, stalk or impersonate anyone.</li>
+<li>Don&rsquo;t use DPGlance to harass, stalk or impersonate anyone.</li>
 </ul>
 <p style="margin-top:16px"><a href="terms/">Read the Terms of Use</a></p>
 </div>
@@ -326,8 +326,8 @@ def home():
 # ---------------------------------------------------------------- privacy
 def privacy():
     root = "../"
-    title = "Privacy Policy | Peekly"
-    desc = ("How Peekly handles your data: clipboard checks happen on your device, no accounts or developer "
+    title = "Privacy Policy | DPGlance"
+    desc = ("How DPGlance handles your data: clipboard checks happen on your device, no accounts or developer "
             "server, and ads come from Google AdMob with consent where required.")
     body = f"""
 <main id="main" class="page">
@@ -337,35 +337,35 @@ def privacy():
 <h1>Privacy Policy</h1>
 <p class="meta">Effective and last updated: {UPDATED_H}</p>
 
-<div class="note"><p><strong>In short.</strong> Peekly has no accounts and no developer server, and we do not run analytics or crash reporting of our own. Your clipboard is checked on your device and never stored or sent anywhere. The only things that leave your phone are the lookup of a profile on snapchat.com and the ad requests handled by Google AdMob.</p></div>
+<div class="note"><p><strong>In short.</strong> DPGlance has no accounts and no developer server, and we do not run analytics or crash reporting of our own. Your clipboard is checked on your device and never stored or sent anywhere. The only things that leave your phone are the lookup of a profile on snapchat.com and the ad requests handled by Google AdMob.</p></div>
 
 <h2>1. Who we are</h2>
-<p>Peekly is a free Android app published by an independent developer (GitHub: <a href="https://github.com/soham-tejani" rel="noopener">soham-tejani</a>). In this policy, &ldquo;we&rdquo; and &ldquo;us&rdquo; mean the Peekly developer. To contact us, see <a href="{root}support/">Support</a>.</p>
-<p>Peekly is an independent app. It is not affiliated with, endorsed by, or sponsored by Snap Inc.</p>
+<p>DPGlance is a free Android app published by an independent developer (GitHub: <a href="https://github.com/soham-tejani" rel="noopener">soham-tejani</a>). In this policy, &ldquo;we&rdquo; and &ldquo;us&rdquo; mean the DPGlance developer. To contact us, see <a href="{root}support/">Support</a>.</p>
+<p>DPGlance is an independent app. It is not affiliated with, endorsed by, or sponsored by Snap Inc.</p>
 
-<h2>2. What Peekly does with information</h2>
+<h2>2. What DPGlance does with information</h2>
 <div class="tbl"><table>
 <thead><tr><th scope="col">Information</th><th scope="col">What happens</th><th scope="col">Leaves your device?</th></tr></thead>
 <tbody>
-<tr><td><strong>Clipboard text</strong></td><td>When you open Peekly, it checks whether the text you most recently copied is plain text, and if so, whether it contains a Snapchat profile link. This happens in memory on your device. If you tap Paste, Peekly reads the clipboard to fill the link box. Clipboard text is never saved or logged. Android may show a notice when an app reads the clipboard.</td><td>No. Only the username found in a link is used (next row).</td></tr>
+<tr><td><strong>Clipboard text</strong></td><td>When you open DPGlance, it checks whether the text you most recently copied is plain text, and if so, whether it contains a Snapchat profile link. This happens in memory on your device. If you tap Paste, DPGlance reads the clipboard to fill the link box. Clipboard text is never saved or logged. Android may show a notice when an app reads the clipboard.</td><td>No. Only the username found in a link is used (next row).</td></tr>
 <tr><td><strong>Profile lookups</strong></td><td>To show a profile, your device requests the public profile page from snapchat.com, and the pictures and videos from Snapchat&rsquo;s content servers (for example sc-cdn.net). These requests go directly from your phone to Snap. We do not proxy, copy or store them.</td><td>Yes, to Snap. Snap receives what any web request includes, such as your IP address, a browser-style user agent and the username requested, and handles it under its own privacy policy.</td></tr>
-<tr><td><strong>Recent profiles</strong></td><td>Peekly remembers up to 30 recently opened profiles (username, display name and a thumbnail link) so you can reopen them. You can remove entries or tap Clear. It also remembers that you have seen the intro screen.</td><td>No. Stored in the app&rsquo;s private storage and deleted when you uninstall.</td></tr>
-<tr><td><strong>Files you save</strong></td><td>Saved photos go to Pictures/Peekly and videos to Movies/Peekly on your device, using Android media storage. Peekly cannot read your other photos or files.</td><td>No.</td></tr>
+<tr><td><strong>Recent profiles</strong></td><td>DPGlance remembers up to 30 recently opened profiles (username, display name and a thumbnail link) so you can reopen them. You can remove entries or tap Clear. It also remembers that you have seen the intro screen.</td><td>No. Stored in the app&rsquo;s private storage and deleted when you uninstall.</td></tr>
+<tr><td><strong>Files you save</strong></td><td>Saved photos go to Pictures/DPGlance and videos to Movies/DPGlance on your device, using Android media storage. DPGlance cannot read your other photos or files.</td><td>No.</td></tr>
 <tr><td><strong>Advertising data</strong></td><td>The free app shows rewarded ads through Google AdMob (see section 3).</td><td>Yes, to Google.</td></tr>
 </tbody></table></div>
 
 <h3>What we do not collect</h3>
-<p>We do not ask for or collect your name, email address, phone number, contacts, precise location, camera or microphone data, or any account details. Peekly has no sign-in. We do not operate a server that receives data from the app.</p>
+<p>We do not ask for or collect your name, email address, phone number, contacts, precise location, camera or microphone data, or any account details. DPGlance has no sign-in. We do not operate a server that receives data from the app.</p>
 
 <h2>3. Advertising (Google AdMob)</h2>
-<p>Peekly uses Google AdMob to show rewarded ads. You always choose to start an ad. According to Google&rsquo;s documentation, the Google Mobile Ads SDK automatically collects and shares, for advertising, analytics and fraud prevention purposes:</p>
+<p>DPGlance uses Google AdMob to show rewarded ads. You always choose to start an ad. According to Google&rsquo;s documentation, the Google Mobile Ads SDK automatically collects and shares, for advertising, analytics and fraud prevention purposes:</p>
 <ul>
 <li>your device&rsquo;s IP address, which Google may use to estimate your general location;</li>
 <li>product interactions, such as app launches, taps and video views;</li>
 <li>diagnostic information about the app and SDK performance, such as launch time and hang rate; and</li>
 <li>device identifiers, including the Android advertising ID and app set ID.</li>
 </ul>
-<p>Peekly declares the advertising ID permission so ads can be served. You can reset or delete your advertising ID, or limit ad personalisation, in your Android settings (usually under Google or Privacy, then Ads), and manage Google ad settings at <a href="https://adssettings.google.com" rel="noopener">adssettings.google.com</a>. Where the law requires consent, for example in the European Economic Area and the United Kingdom, Peekly shows Google&rsquo;s consent form first and does not request ads until consent allows it.</p>
+<p>DPGlance declares the advertising ID permission so ads can be served. You can reset or delete your advertising ID, or limit ad personalisation, in your Android settings (usually under Google or Privacy, then Ads), and manage Google ad settings at <a href="https://adssettings.google.com" rel="noopener">adssettings.google.com</a>. Where the law requires consent, for example in the European Economic Area and the United Kingdom, DPGlance shows Google&rsquo;s consent form first and does not request ads until consent allows it.</p>
 <p>Google processes this data under its own terms. See <a href="https://policies.google.com/privacy" rel="noopener">Google&rsquo;s Privacy Policy</a> and <a href="https://policies.google.com/technologies/ads" rel="noopener">how Google uses data from ads</a>.</p>
 
 <h2>4. How we use information</h2>
@@ -379,16 +379,16 @@ def privacy():
 <p>We do not control these companies. Their own privacy policies apply to what they receive.</p>
 
 <h2>6. Retention and deletion</h2>
-<p>We hold no personal data about you. Data stored on your phone (recent profiles and the intro flag) stays until you remove it or uninstall Peekly. Files you saved stay in your gallery until you delete them. Data held by Google or Snap is governed by their policies and controls.</p>
+<p>We hold no personal data about you. Data stored on your phone (recent profiles and the intro flag) stays until you remove it or uninstall DPGlance. Files you saved stay in your gallery until you delete them. Data held by Google or Snap is governed by their policies and controls.</p>
 
 <h2>7. Security</h2>
-<p>Peekly connects only over HTTPS and blocks unencrypted traffic. Its stored data is excluded from Android backups. No method of transmission or storage is perfectly secure, but we keep the amount of data handled to a minimum.</p>
+<p>DPGlance connects only over HTTPS and blocks unencrypted traffic. Its stored data is excluded from Android backups. No method of transmission or storage is perfectly secure, but we keep the amount of data handled to a minimum.</p>
 
 <h2>8. Your choices and rights</h2>
 <p>Depending on where you live (for example under the GDPR, UK GDPR, California&rsquo;s CCPA/CPRA or India&rsquo;s Digital Personal Data Protection Act), you may have rights to access, correct, delete or restrict the use of your personal data. Because we do not hold personal data about you, there is usually nothing for us to provide or delete, but you can still contact us and we will respond. To control advertising data, use the Android and Google settings described in section 3.</p>
 
 <h2>9. Children</h2>
-<p>Peekly is not directed to children under 13, and ads are not directed to children. Snapchat itself requires users to be at least 13. If you believe a child has used Peekly in a way that concerns you, please contact us.</p>
+<p>DPGlance is not directed to children under 13, and ads are not directed to children. Snapchat itself requires users to be at least 13. If you believe a child has used DPGlance in a way that concerns you, please contact us.</p>
 
 <h2>10. International processing</h2>
 <p>Google and Snap operate globally, so data sent to them may be processed in countries other than yours.</p>
@@ -409,8 +409,8 @@ def privacy():
 # ---------------------------------------------------------------- terms
 def terms():
     root = "../"
-    title = "Terms of Use | Peekly"
-    desc = ("The rules for using Peekly: public content only, respect creators’ rights, no affiliation with "
+    title = "Terms of Use | DPGlance"
+    desc = ("The rules for using DPGlance: public content only, respect creators’ rights, no affiliation with "
             "Snap Inc., and how ads and availability work.")
     body = f"""
 <main id="main" class="page">
@@ -421,48 +421,48 @@ def terms():
 <p class="meta">Effective and last updated: {UPDATED_H}</p>
 
 <h2>1. Agreement</h2>
-<p>By installing or using Peekly (the &ldquo;app&rdquo;) or this website, you agree to these terms and to our <a href="{root}privacy/">Privacy Policy</a>. If you do not agree, please do not use them.</p>
+<p>By installing or using DPGlance (the &ldquo;app&rdquo;) or this website, you agree to these terms and to our <a href="{root}privacy/">Privacy Policy</a>. If you do not agree, please do not use them.</p>
 
-<h2>2. What Peekly is</h2>
-<p>Peekly is a free Android app that shows what a public profile already publishes openly (such as the profile picture, cover image, highlights and Spotlight) from a link you provide, and lets you save those items to your device. It works only with public information and never asks you to sign in to another service.</p>
+<h2>2. What DPGlance is</h2>
+<p>DPGlance is a free Android app that shows what a public profile already publishes openly (such as the profile picture, cover image, highlights and Spotlight) from a link you provide, and lets you save those items to your device. It works only with public information and never asks you to sign in to another service.</p>
 
 <h2>3. Independent app</h2>
 <p>{escape(DISCLAIMER)}</p>
 
-<h2>4. Using Peekly responsibly</h2>
+<h2>4. Using DPGlance responsibly</h2>
 <p>You agree that you will:</p>
 <ul>
-<li>use Peekly only for lawful, personal, non-commercial purposes;</li>
+<li>use DPGlance only for lawful, personal, non-commercial purposes;</li>
 <li>respect the rights of the people who created the content, and not repost, sell or redistribute it without their permission;</li>
-<li>not use Peekly to harass, stalk, threaten, impersonate, or expose private information about anyone;</li>
+<li>not use DPGlance to harass, stalk, threaten, impersonate, or expose private information about anyone;</li>
 <li>not attempt to access anything that is not public, or to bypass any block or limit set by a third party;</li>
-<li>not use Peekly for bulk, automated or repeated collection of profiles; and</li>
-<li>follow the terms of any service you use alongside Peekly. You are responsible for how you use what you view or save.</li>
+<li>not use DPGlance for bulk, automated or repeated collection of profiles; and</li>
+<li>follow the terms of any service you use alongside DPGlance. You are responsible for how you use what you view or save.</li>
 </ul>
 
 <h2>5. Creators&rsquo; content</h2>
-<p>Profile pictures, covers, highlights and other content belong to their creators and, where applicable, to the platform they were published on. Peekly does not host, copy or claim ownership of that content. It is fetched directly from the source to your device. Saving an image gives you no licence to use it beyond what the law and the creator allow.</p>
+<p>Profile pictures, covers, highlights and other content belong to their creators and, where applicable, to the platform they were published on. DPGlance does not host, copy or claim ownership of that content. It is fetched directly from the source to your device. Saving an image gives you no licence to use it beyond what the law and the creator allow.</p>
 
 <h2>6. Ads</h2>
 <p>The free app shows rewarded ads provided by Google AdMob. You choose when to watch one. Ads are third-party content and we are not responsible for them. See the Privacy Policy for how ad data is handled.</p>
 
 <h2>7. Third-party services and availability</h2>
-<p>Peekly depends on third-party services that we do not control. They may change, limit or block access at any time, which can make parts of Peekly stop working or show errors. We do not promise that Peekly will always be available, accurate or error-free, and we may change or discontinue features at any time.</p>
+<p>DPGlance depends on third-party services that we do not control. They may change, limit or block access at any time, which can make parts of DPGlance stop working or show errors. We do not promise that DPGlance will always be available, accurate or error-free, and we may change or discontinue features at any time.</p>
 
 <h2>8. Our property</h2>
-<p>The Peekly name, logo, design and app code are the developer&rsquo;s. These terms do not give you any rights to them except to use the app as intended.</p>
+<p>The DPGlance name, logo, design and app code are the developer&rsquo;s. These terms do not give you any rights to them except to use the app as intended.</p>
 
 <h2>9. No warranty</h2>
-<p>Peekly is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranties of any kind, to the fullest extent allowed by law.</p>
+<p>DPGlance is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranties of any kind, to the fullest extent allowed by law.</p>
 
 <h2>10. Limitation of liability</h2>
-<p>To the fullest extent allowed by law, the Peekly developer is not liable for indirect, incidental, special or consequential damages, or for loss of data or profits, arising from your use of Peekly. Nothing in these terms limits any rights or liability that cannot be limited under the law that applies to you, including statutory consumer rights.</p>
+<p>To the fullest extent allowed by law, the DPGlance developer is not liable for indirect, incidental, special or consequential damages, or for loss of data or profits, arising from your use of DPGlance. Nothing in these terms limits any rights or liability that cannot be limited under the law that applies to you, including statutory consumer rights.</p>
 
 <h2>11. Reports and removal requests</h2>
-<p>If you are a creator or rights holder and believe Peekly is being misused, or you want to raise a concern, please use the <a href="{root}support/">Support page</a>. We review requests promptly and act where appropriate.</p>
+<p>If you are a creator or rights holder and believe DPGlance is being misused, or you want to raise a concern, please use the <a href="{root}support/">Support page</a>. We review requests promptly and act where appropriate.</p>
 
 <h2>12. Ending use and changes</h2>
-<p>You can stop using Peekly at any time by uninstalling it. We may update these terms; the date above shows the latest version, and continued use after an update means you accept it.</p>
+<p>You can stop using DPGlance at any time by uninstalling it. We may update these terms; the date above shows the latest version, and continued use after an update means you accept it.</p>
 
 <h2>13. Contact</h2>
 <p>See the <a href="{root}support/">Support page</a>.</p>
@@ -477,8 +477,8 @@ def terms():
 # ---------------------------------------------------------------- support
 def support():
     root = "../"
-    title = "Support and reports | Peekly"
-    desc = ("Get help with Peekly, report misuse, make a takedown or removal request, or send a privacy "
+    title = "Support and reports | DPGlance"
+    desc = ("Get help with DPGlance, report misuse, make a takedown or removal request, or send a privacy "
             "request. Includes fixes for common problems.")
     body = f"""
 <main id="main" class="page">
@@ -498,21 +498,21 @@ def support():
 <div class="note"><p><strong>Please keep it private.</strong> GitHub requests are public. Do not post personal details, screenshots of private information or anything sensitive. Describe what you need and we will reply with a private way to continue if one is needed.</p></div>
 
 <h2>Common problems</h2>
-<h3>Peekly doesn&rsquo;t find my link</h3>
-<p>Copy the full profile link and open Peekly again, or paste the link or username into the box on the home screen. Only public profile links are supported.</p>
+<h3>DPGlance doesn&rsquo;t find my link</h3>
+<p>Copy the full profile link and open DPGlance again, or paste the link or username into the box on the home screen. Only public profile links are supported.</p>
 <h3>&ldquo;No public photo&rdquo; or &ldquo;Profile not found&rdquo;</h3>
-<p>Peekly shows only what a profile publishes publicly. A personal account without a public profile has no public photo to show. Check the username for typos.</p>
+<p>DPGlance shows only what a profile publishes publicly. A personal account without a public profile has no public photo to show. Check the username for typos.</p>
 <h3>The ad won&rsquo;t load</h3>
-<p>Check your connection and try again. If an ad can&rsquo;t load after a couple of tries, Peekly lets you continue.</p>
+<p>Check your connection and try again. If an ad can&rsquo;t load after a couple of tries, DPGlance lets you continue.</p>
 <h3>Where did my saved files go?</h3>
-<p>Photos are in Pictures/Peekly/username and videos in Movies/Peekly/username. Look in your gallery or Files app under those folders.</p>
+<p>Photos are in Pictures/DPGlance/username and videos in Movies/DPGlance/username. Look in your gallery or Files app under those folders.</p>
 <h3>Something suddenly stopped working</h3>
-<p>Peekly relies on a third-party website that can change without notice. Update the app, and if the problem continues, send us a bug report.</p>
+<p>DPGlance relies on a third-party website that can change without notice. Update the app, and if the problem continues, send us a bug report.</p>
 
 <h2>Reports and removal requests</h2>
-<p>Peekly does not host or store anyone&rsquo;s content. It shows what a profile already publishes publicly. If you are a creator and do not want your public profile to be visible, the quickest fix is to change your profile&rsquo;s visibility in Snapchat. If you believe Peekly is being used to harm someone or to infringe rights, send us a report using the form above, with the username concerned and what the problem is. We review every request and act where appropriate.</p>
+<p>DPGlance does not host or store anyone&rsquo;s content. It shows what a profile already publishes publicly. If you are a creator and do not want your public profile to be visible, the quickest fix is to change your profile&rsquo;s visibility in Snapchat. If you believe DPGlance is being used to harm someone or to infringe rights, send us a report using the form above, with the username concerned and what the problem is. We review every request and act where appropriate.</p>
 
-<h2>About Peekly</h2>
+<h2>About DPGlance</h2>
 <p>{escape(DISCLAIMER)}</p>
 <p>See also: <a href="{root}privacy/">Privacy Policy</a> &middot; <a href="{root}terms/">Terms of Use</a></p>
 </article>
@@ -525,19 +525,19 @@ def support():
 
 # ---------------------------------------------------------------- 404
 def not_found():
-    root = "/peekly/"
+    root = "/dpglance/"
     body = f"""
 <main id="main" class="page">
 <div class="wrap">
 <article class="prose glass" style="text-align:center;margin-inline:auto">
-<h1>That page <span class="grad">peeked out.</span></h1>
+<h1>That page <span class="grad">looked away.</span></h1>
 <p>We couldn&rsquo;t find what you were looking for.</p>
-<p><a class="btn primary" href="{root}">Back to Peekly</a></p>
+<p><a class="btn primary" href="{root}">Back to DPGlance</a></p>
 </article>
 </div>
 </main>
 """
-    page = head("Page not found | Peekly", "This page could not be found.", "404.html", root, None, noindex=True)
+    page = head("Page not found | DPGlance", "This page could not be found.", "404.html", root, None, noindex=True)
     write("404.html", page + header(root) + body + footer(root))
 
 
@@ -552,8 +552,8 @@ def static_files():
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
     write(".nojekyll", "")
     manifest = {
-        "name": "Peekly", "short_name": "Peekly",
-        "description": "Peek at any public profile.",
+        "name": "DPGlance", "short_name": "DPGlance",
+        "description": "Glance at any public profile.",
         "start_url": "./", "scope": "./", "display": "browser",
         "background_color": "#0c0c0d", "theme_color": "#0c0c0d",
         "icons": [

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Renders Peekly's icons, social image and Play Store graphics.
+"""Renders DPGlance's icons, social image and Play Store graphics.
 
 Needs: fonttools (pip install fonttools), rsvg-convert and ImageMagick (magick).
 Run:   python3 tools/graphics.py path/to/spacegrotesk.ttf
@@ -23,8 +23,12 @@ TTF = sys.argv[1]
 BG, AMBER, CORAL = "#0C0C0D", "#FFC53D", "#FF6B4A"
 AMBER_DEEP, CORAL_DEEP, INK = "#7A5410", "#8F2F1B", "#F4F4F5"
 
-EYE = ('<path d="M24,54 C33,38 44,32 54,32 C64,32 75,38 84,54 C75,70 64,76 54,76 C44,76 33,70 24,54 Z" fill="%s"/>'
-       '<circle cx="54" cy="54" r="13" fill="%s"/><circle cx="54" cy="54" r="5.5" fill="%s"/>') % (AMBER, CORAL, BG)
+# Mark: amber avatar disc with a dark person silhouette and a coral sparkle (the "glance").
+# Everything sits inside a 33-unit radius of the centre so Android's circular launcher mask never clips it.
+EYE = ('<defs><clipPath id="av"><circle cx="54" cy="54" r="29.7"/></clipPath></defs>'
+       f'<circle cx="54" cy="54" r="29" fill="{AMBER}"/>'
+       f'<g clip-path="url(#av)"><circle cx="54" cy="47" r="9" fill="{BG}"/><ellipse cx="54" cy="82" rx="22" ry="18" fill="{BG}"/></g>'
+       f'<path d="M72,28 L74.2,33.8 L80,36 L74.2,38.2 L72,44 L69.8,38.2 L64,36 L69.8,33.8 Z" fill="{CORAL}"/>')
 
 
 def make_font(weight):
@@ -92,6 +96,8 @@ def main():
     # vector icons
     logo = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108"><rect width="108" height="108" rx="24" fill="{BG}"/>{EYE}</svg>')
     (IMG / "favicon.svg").write_text(logo + "\n")
+    (IMG / "logo.svg").write_text(logo.replace(
+        'viewBox="0 0 108 108">', 'viewBox="0 0 108 108" role="img" aria-label="DPGlance logo: an amber profile avatar with a coral sparkle">') + "\n")
 
     # raster icons (full-bleed square; platforms apply their own mask)
     render(square_svg(512), IMG / "icon-512.png")
@@ -100,9 +106,9 @@ def main():
     render(square_svg(512), PLAY / "app-icon-512.png")
     subprocess.run(["magick", str(PLAY / "app-icon-512.png"), "-alpha", "on", "PNG32:" + str(PLAY / "app-icon-512.png")], check=True)
     for n in (16, 32, 48):
-        render(square_svg(n), pathlib.Path(tempfile.gettempdir()) / f"peekly-{n}.png")
+        render(square_svg(n), pathlib.Path(tempfile.gettempdir()) / f"dpglance-{n}.png")
     t = pathlib.Path(tempfile.gettempdir())
-    subprocess.run(["magick", str(t / "peekly-16.png"), str(t / "peekly-32.png"), str(t / "peekly-48.png"),
+    subprocess.run(["magick", str(t / "dpglance-16.png"), str(t / "dpglance-32.png"), str(t / "dpglance-48.png"),
                     str(ROOT / "docs" / "favicon.ico")], check=True)
 
     # social share image 1200x630
@@ -111,8 +117,8 @@ def main():
     body += ('<rect x="70" y="80" width="1060" height="470" rx="56" fill="#ffffff" fill-opacity=".07" '
              'stroke="#ffffff" stroke-opacity=".2" stroke-width="2"/>')
     body += logo_tile(130, 195, 240)
-    body += text("Peekly", 128, 420, 322)
-    body += text("Peek at any public profile.", 46, 424, 392, 500)
+    body += text("DPGlance", 128, 420, 322)
+    body += text("Glance at any public profile.", 46, 424, 392, 500)
     body += text("Free Android app. No account needed.", 30, 424, 448, 500, INK, opacity=.72)
     body += text("Independent app. Not affiliated with Snap Inc.", 24, 424, 506, 500, INK, opacity=.55)
     render(scene(w, h, body), IMG / "og-image.png")
@@ -121,8 +127,8 @@ def main():
     w, h = 1024, 500
     body = orbs(w, h)
     body += logo_tile(96, 130, 240)
-    body += text("Peekly", 112, 380, 270)
-    body += text("Peek at any public profile.", 40, 384, 338, 500, INK, opacity=.85)
+    body += text("DPGlance", 112, 380, 270)
+    body += text("Glance at any public profile.", 40, 384, 338, 500, INK, opacity=.85)
     render(scene(w, h, body), PLAY / "feature-graphic-1024x500.png")
 
     print("graphics written")

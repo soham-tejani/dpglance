@@ -17,7 +17,7 @@ the Google Mobile Ads SDK: https://developers.google.com/admob/android/privacy/p
 | Reads clipboard text on app focus and on tapping Paste, in memory only | `data/ClipboardReader.kt` | No |
 | Requests the public profile page and media for a username the user chose | `data/SnapProfileFetcher.kt`, `data/Downloader.kt` (hosts limited to snapchat.com and sc-cdn.net) | Yes, directly device to Snap. Never touches the developer. |
 | Keeps up to 30 recent profiles and an "intro seen" flag | `data/HistoryStore.kt` (private SharedPreferences) | No. `allowBackup="false"` |
-| Saves files with MediaStore to Pictures/Peekly and Movies/Peekly | `data/Downloader.kt` | No |
+| Saves files with MediaStore to Pictures/DPGlance and Movies/DPGlance | `data/Downloader.kt` | No |
 | Rewarded ads and consent | `ads/RewardedAdGate.kt`, `ads/ConsentManager.kt` (Google AdMob and UMP) | Yes, to Google |
 | Developer-operated server, analytics, crash reporting, accounts | None present | n/a |
 

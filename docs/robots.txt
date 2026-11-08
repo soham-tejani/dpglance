@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://soham-tejani.github.io/peekly/sitemap.xml
+Sitemap: https://soham-tejani.github.io/dpglance/sitemap.xml

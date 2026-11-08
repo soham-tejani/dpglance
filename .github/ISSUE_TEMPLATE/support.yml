@@ -1,5 +1,5 @@
 name: Get help or report a bug
-description: Something in Peekly is not working.
+description: Something in DPGlance is not working.
 title: "[Help] "
 labels: ["support"]
 body:
@@ -17,8 +17,8 @@ body:
   - type: input
     id: version
     attributes:
-      label: Peekly version and Android version
-      placeholder: "Peekly 0.1.0, Android 14"
+      label: DPGlance version and Android version
+      placeholder: "DPGlance 0.1.0, Android 14"
   - type: textarea
     id: steps
     attributes:

@@ -1,7 +1,7 @@
 {
-  "name": "Peekly",
-  "short_name": "Peekly",
-  "description": "Peek at any public profile.",
+  "name": "DPGlance",
+  "short_name": "DPGlance",
+  "description": "Glance at any public profile.",
   "start_url": "./",
   "scope": "./",
   "display": "browser",

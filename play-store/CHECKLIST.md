@@ -8,7 +8,7 @@ keep the app. Items marked *you* need a decision or an account only you can prov
 1. **BLOCKER: no privacy policy link inside the app.** Play requires the policy to be reachable from the store
    listing *and* inside the app. The app has a first-run "Before you start" screen but no screen or button that
    links to the policy. Add an About/Info entry that opens
-   https://soham-tejani.github.io/peekly/privacy/ and repeat the "not affiliated with Snap Inc." line there.
+   https://soham-tejani.github.io/dpglance/privacy/ and repeat the "not affiliated with Snap Inc." line there.
    The same screen should show a "Privacy options" row that calls `ConsentManager.showPrivacyOptions()` when
    `privacyOptionsRequired` is true. That method exists in `ads/ConsentManager.kt` but no screen uses it yet, and
    Google's consent framework expects EEA and UK users to be able to change their choice.
@@ -51,7 +51,7 @@ keep the app. Items marked *you* need a decision or an account only you can prov
 - [ ] Configure the consent message in AdMob > Privacy and messaging (the app already uses Google's UMP SDK) for
       the EEA and UK, plus any US state regulations you want covered.
 - [ ] `app-ads.txt` is verified from the **root** of the developer website domain listed in Play. This site is a
-      GitHub *project* page (`soham-tejani.github.io/peekly/`), so its root is not controlled here. If you want
+      GitHub *project* page (`soham-tejani.github.io/dpglance/`), so its root is not controlled here. If you want
       `app-ads.txt`, serve it from a domain root you control (for example a custom domain or a
       `soham-tejani.github.io` user site).
 

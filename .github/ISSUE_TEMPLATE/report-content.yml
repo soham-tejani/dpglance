@@ -1,5 +1,5 @@
 name: Report misuse or request removal
-description: You are a creator or rights holder with a concern about how Peekly shows public content.
+description: You are a creator or rights holder with a concern about how DPGlance shows public content.
 title: "[Report] "
 labels: ["report"]
 body:
@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Issues on GitHub are **public**. Please do not post personal details, private screenshots or anything
-        sensitive. Peekly does not host anyone's content; it shows what a profile already publishes publicly. The quickest
+        sensitive. DPGlance does not host anyone's content; it shows what a profile already publishes publicly. The quickest
         way to stop a profile appearing is to change its visibility in Snapchat. We review every request.
   - type: input
     id: username

@@ -1,14 +1,14 @@
-# Peekly website
+# DPGlance website
 
-Marketing site, legal pages and Google Play helper files for **Peekly**, a free Android app for viewing and saving
+Marketing site, legal pages and Google Play helper files for **DPGlance**, a free Android app for viewing and saving
 the public photos on a profile.
 
-- Live site: https://soham-tejani.github.io/peekly/
-- Privacy policy: https://soham-tejani.github.io/peekly/privacy/
-- Terms: https://soham-tejani.github.io/peekly/terms/
-- Support and reports: https://soham-tejani.github.io/peekly/support/
+- Live site: https://soham-tejani.github.io/dpglance/
+- Privacy policy: https://soham-tejani.github.io/dpglance/privacy/
+- Terms: https://soham-tejani.github.io/dpglance/terms/
+- Support and reports: https://soham-tejani.github.io/dpglance/support/
 
-> Peekly is an independent app and is not affiliated with, endorsed by, or sponsored by Snap Inc. Snapchat and the
+> DPGlance is an independent app and is not affiliated with, endorsed by, or sponsored by Snap Inc. Snapchat and the
 > Ghost logo are trademarks of Snap Inc.
 
 ## Layout
