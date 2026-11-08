@@ -20,15 +20,15 @@ IMG = ROOT / "docs" / "assets" / "img"
 PLAY = ROOT / "play-store" / "graphics"
 TTF = sys.argv[1]
 
-BG, AMBER, CORAL = "#0C0C0D", "#FFC53D", "#FF6B4A"
-AMBER_DEEP, CORAL_DEEP, INK = "#7A5410", "#8F2F1B", "#F4F4F5"
+BG, AMBER = "#0C0C0D", "#FFC53D"
+AMBER_DEEP, INK = "#7A5410", "#F4F4F5"
 
-# Mark: amber avatar disc with a dark person silhouette and a coral sparkle (the "glance").
+# Mark: amber avatar disc with a dark person silhouette and a dark sparkle cut-out (the "glance").
 # Everything sits inside a 33-unit radius of the centre so Android's circular launcher mask never clips it.
 EYE = ('<defs><clipPath id="av"><circle cx="54" cy="54" r="29.7"/></clipPath></defs>'
        f'<circle cx="54" cy="54" r="29" fill="{AMBER}"/>'
        f'<g clip-path="url(#av)"><circle cx="54" cy="47" r="9" fill="{BG}"/><ellipse cx="54" cy="82" rx="22" ry="18" fill="{BG}"/></g>'
-       f'<path d="M72,28 L74.2,33.8 L80,36 L74.2,38.2 L72,44 L69.8,38.2 L64,36 L69.8,33.8 Z" fill="{CORAL}"/>')
+       f'<path d="M70,32 L71.7,36.3 L76,38 L71.7,39.7 L70,44 L68.3,39.7 L64,38 L68.3,36.3 Z" fill="{BG}"/>')
 
 
 def make_font(weight):
@@ -69,7 +69,7 @@ def scene(w, h, body):
 
 def orbs(w, h):
     return (f'<circle cx="{w*0.1}" cy="{h*0.05}" r="{h*0.55}" fill="{AMBER_DEEP}" opacity=".8" filter="url(#b)"/>'
-            f'<circle cx="{w*0.92}" cy="{h*0.95}" r="{h*0.5}" fill="{CORAL_DEEP}" opacity=".75" filter="url(#b)"/>')
+            f'<circle cx="{w*0.92}" cy="{h*0.95}" r="{h*0.5}" fill="{AMBER_DEEP}" opacity=".75" filter="url(#b)"/>')
 
 
 def render(svg, out, w=None, h=None):
@@ -97,7 +97,7 @@ def main():
     logo = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108"><rect width="108" height="108" rx="24" fill="{BG}"/>{EYE}</svg>')
     (IMG / "favicon.svg").write_text(logo + "\n")
     (IMG / "logo.svg").write_text(logo.replace(
-        'viewBox="0 0 108 108">', 'viewBox="0 0 108 108" role="img" aria-label="DPGlance logo: an amber profile avatar with a coral sparkle">') + "\n")
+        'viewBox="0 0 108 108">', 'viewBox="0 0 108 108" role="img" aria-label="DPGlance logo: an amber profile avatar with a dark sparkle">') + "\n")
 
     # raster icons (full-bleed square; platforms apply their own mask)
     render(square_svg(512), IMG / "icon-512.png")

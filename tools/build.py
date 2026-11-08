@@ -99,13 +99,13 @@ def head(title, desc, path, root, jsonld=None, noindex=False):
 <meta property="og:image" content="{OG}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DPGlance app icon, an amber profile avatar with a coral sparkle, on a dark glass background">
+<meta property="og:image:alt" content="DPGlance app icon, an amber profile avatar with a dark sparkle, on a dark glass background">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{t}">
 <meta name="twitter:description" content="{d}">
 <meta name="twitter:image" content="{OG}">
-<meta name="twitter:image:alt" content="DPGlance app icon, an amber profile avatar with a coral sparkle, on a dark glass background">
+<meta name="twitter:image:alt" content="DPGlance app icon, an amber profile avatar with a dark sparkle, on a dark glass background">
 <link rel="icon" href="{root}assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="{root}favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="{root}assets/img/apple-touch-icon.png">
